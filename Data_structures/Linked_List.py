@@ -10,7 +10,7 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        self.SSpointer = None # This Spointer will always point into first node
+        self.Spointer = None # This Spointer will always point into first node
 
     def appendLast(self, data):
         Newnode = Node(data)
@@ -19,7 +19,7 @@ class LinkedList:
             return
         else:
             Last = self.Spointer
-            while (Last != None): 
+            while (Last.next != None): 
                 Last = Last.next
             Last.next = Newnode
             return
@@ -34,7 +34,7 @@ class LinkedList:
         if self.Spointer == None:
             return     
         elif self.Spointer.next == None:
-            self.Spointer == None
+            self.Spointer = None
         else:
             Last = self.Spointer
             while (Last.next.next is not None):
@@ -56,7 +56,7 @@ class LinkedList:
     
     def count (self):
         if self is None:
-            return 0
+            sum = 0
         else:
             Count = self.Spointer
             Sum = 0
@@ -68,7 +68,7 @@ class LinkedList:
 
 class DNode (Node):
     def __init__ (self, data, next = None, prev = None):
-        super().__init__()
+        super().__init__(data,next)
         self.prev = prev
         
 class DLinkedList:
@@ -83,8 +83,8 @@ class DLinkedList:
             Last = self.Dpointer
             while (Last.next is not None ):
                 Last = Last.next
-        Last.next = NewDNode
-        NewDNode.prev = Last
+            Last.next = NewDNode
+            NewDNode.prev = Last
             
     def appendFirst(self, data):
         NewDNode = DNode(data)
@@ -96,7 +96,7 @@ class DLinkedList:
             self.Dpointer = NewDNode 
     
     def RemoveLast(self):
-        if (self.Dpointer).next = None:
+        if (self.Dpointer).next == None:
             self.Dpointer = None
         else:
             Last = self.Dpointer
@@ -121,11 +121,12 @@ class DLinkedList:
 
     def Count(self):
         if self is None:
-            return 0
+            sum = 0
         else:
-            Count = self.Spointer
+            Count = self.Dpointer
             Sum = 0
             while (Count is not None):
                 Sum += 1
                 Count = Count.next
             return Sum
+        
